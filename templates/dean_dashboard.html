@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Administration Overview - Anna University Regional Campus Tirunelveli</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-dark bg-dark px-4 py-3">
+        <span class="navbar-brand mb-0 h1">Anna University | Administration Overview</span>
+        <div class="d-flex align-items-center gap-3">
+            <a href="/export-excel" class="btn btn-sm btn-success fw-bold">
+                <i class="bi bi-file-earmark-excel"></i> Export All to Excel
+            </a>
+            <a href="/logout" class="btn btn-sm btn-outline-danger">Sign Out</a>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-4 px-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="fw-bold mb-0">Campus-Wide Hostel Applications</h4>
+            <span class="text-muted small">Viewing records across Pothigai & Thamirabarani</span>
+        </div>
+
+        <div class="card border-0 shadow-sm">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>App No</th>
+                            <th>Hostel</th>
+                            <th>Student</th>
+                            <th>Dept</th>
+                            <th>Room</th>
+                            <th>Dates</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for app in applications %}
+                        <tr>
+                            <td><strong>{{ app.application_number }}</strong></td>
+                            <td>{{ app.hostel_name }}</td>
+                            <td>{{ app.student_name }} ({{ app.register_no }})</td>
+                            <td><span class="badge bg-secondary">{{ app.department_code }}</span></td>
+                            <td>{{ app.room_no }}</td>
+                            <td>{{ app.from_date }} to {{ app.to_date }}</td>
+                            <td>{{ app.application_type }}</td>
+                            <td>
+                                {% if app.status == 'APPROVED' %}
+                                    <span class="badge bg-success">APPROVED</span>
+                                {% elif app.status == 'REJECTED' %}
+                                    <span class="badge bg-danger">REJECTED</span>
+                                {% else %}
+                                    <span class="badge bg-warning text-dark">PENDING</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr><td colspan="8" class="text-center py-4 text-muted">No records available.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

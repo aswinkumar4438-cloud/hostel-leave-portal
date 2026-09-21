@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anna University Regional Campus Tirunelveli - Hostel Leave Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body { 
+            background-color: #f4f6f9; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        }
+        .header-section {
+            background: #ffffff;
+            border-bottom: 4px solid #b8860b; /* Golden accent */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px 0;
+        }
+        .univ-logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+        .hero { 
+            background: linear-gradient(135deg, #0d2c54 0%, #1e3c72 100%); 
+            color: white; 
+            padding: 45px 0; 
+        }
+        .card { 
+            border: none; 
+            border-radius: 14px; 
+            transition: transform 0.25s ease, box-shadow 0.25s ease; 
+        }
+        .card:hover { 
+            transform: translateY(-6px); 
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12); 
+        }
+        .icon-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .badge-hostel {
+            background-color: #e9ecef;
+            color: #0d2c54;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        footer {
+            background-color: #0d2c54;
+            color: #c9d6df;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- College Branding Header -->
+    <header class="header-section">
+        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-center text-center gap-3">
+            <img src="{{ url_for('static', filename='images/anna_univ_logo.png') }}" 
+                 alt="Anna University Logo" 
+                 class="univ-logo"
+                 onerror="this.src='https://upload.wikimedia.org/wikipedia/en/thumb/4/49/Anna_University_Logo.svg/240px-Anna_University_Logo.svg.png'">
+            <div>
+                <h2 class="fw-bold text-dark mb-1 text-uppercase" style="letter-spacing: 0.5px;">Anna University</h2>
+                <h5 class="fw-semibold text-primary mb-0">REGIONAL CAMPUS TIRUNELVELI</h5>
+                <p class="text-muted small mb-0">Tirunelveli - Nagercoil National Highway, South Highground, Tirunelveli - 627 007</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sub-Hero: Leave Portal Banner -->
+    <section class="hero text-center mb-5">
+        <div class="container">
+            <h1 class="fw-bold display-6 mb-2">Digital Hostel E-Leave Portal</h1>
+            <p class="lead text-light opacity-90 mb-3">Online Leave Application, Verification & Digital Pass Management System</p>
+            <div class="d-flex justify-content-center gap-2 flex-wrap">
+                <span class="badge bg-light text-dark px-3 py-2 rounded-pill"><i class="bi bi-building me-1"></i> Pothigai Boys Hostel</span>
+                <span class="badge bg-light text-dark px-3 py-2 rounded-pill"><i class="bi bi-building me-1"></i> Thamirabarani Girls Hostel</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Navigation Cards -->
+    <div class="container mb-5">
+        <div class="row g-4 justify-content-center">
+
+            <!-- Card 1: Student Apply Leave -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm p-4 text-center">
+                    <div class="card-body d-flex flex-column">
+                        <div class="icon-circle bg-primary-subtle text-primary mx-auto">
+                            <i class="bi bi-pencil-square"></i>
+                        </div>
+                        <h4 class="card-title fw-bold text-dark">Apply for Leave</h4>
+                        <p class="card-text text-muted flex-grow-1">
+                            Public portal for hostel inmates to submit leave requests (Weekend, Working-Day, or Outing). No login needed.
+                        </p>
+                        <a href="/apply-leave" class="btn btn-primary w-100 py-2 mt-3 fw-semibold">
+                            <i class="bi bi-send me-1"></i> Apply Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Track Application Status -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm p-4 text-center">
+                    <div class="card-body d-flex flex-column">
+                        <div class="icon-circle bg-success-subtle text-success mx-auto">
+                            <i class="bi bi-search"></i>
+                        </div>
+                        <h4 class="card-title fw-bold text-dark">Track Application</h4>
+                        <p class="card-text text-muted flex-grow-1">
+                            Check real-time application status, Warden approval logs, and download verified digital QR exit passes.
+                        </p>
+                        <a href="/track" class="btn btn-outline-success w-100 py-2 mt-3 fw-semibold">
+                            <i class="bi bi-file-earmark-check me-1"></i> Track & Download Pass
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Authority Login -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm p-4 text-center">
+                    <div class="card-body d-flex flex-column">
+                        <div class="icon-circle bg-warning-subtle text-dark mx-auto">
+                            <i class="bi bi-shield-lock-fill text-warning"></i>
+                        </div>
+                        <h4 class="card-title fw-bold text-dark">Staff Portal</h4>
+                        <p class="card-text text-muted flex-grow-1">
+                            Authorized access for Deputy Wardens, Executive Warden, and the Dean / Warden.
+                        </p>
+                        <a href="/login" class="btn btn-dark w-100 py-2 mt-3 fw-semibold">
+                            <i class="bi bi-box-arrow-in-right me-1"></i> Authority Login
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center mt-auto">
+        <div class="container">
+            <p class="mb-1 small">© 2026 Anna University Regional Campus Tirunelveli. All Rights Reserved.</p>
+            <p class="mb-0 small text-light opacity-75">Departments: ECE | CSE | GI | MECHANICAL | MBA | AI&DS</p>
+        </div>
+    </footer>
+
+</body>
+</html>
